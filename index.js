@@ -4,7 +4,7 @@
  * array-to-sentence | ISC (c) Shinnosuke Watanabe
  * https://github.com/shinnn/array-to-sentence
 */
-var OPTION_NAMES = ['separator', 'lastSeparator'];
+var STRING_OPTION_NAMES = ['separator', 'lastSeparator'];
 
 function arrayToSentence(arr, options) {
 	if (!Array.isArray(arr)) {
@@ -16,13 +16,13 @@ function arrayToSentence(arr, options) {
 		lastSeparator: ' and ',
 	}, options);
 
-	for (var i = 0; i < 2; i++) {
-		if (typeof options[OPTION_NAMES[i]] !== 'string') {
+	for (var i = 0; i < STRING_OPTION_NAMES.length; i++) {
+		if (typeof options[STRING_OPTION_NAMES[i]] !== 'string') {
 			throw new TypeError(
 				'Expected `' +
-				OPTION_NAMES[i] +
+				STRING_OPTION_NAMES[i] +
 				'` option to be a string, but got a non-string value ' +
-				options[OPTION_NAMES[i]] +
+				options[STRING_OPTION_NAMES[i]] +
 				'.'
 			);
 		}
@@ -36,7 +36,9 @@ function arrayToSentence(arr, options) {
 		return arr[0];
 	}
 
-	return arr.slice(0, -1).join(options.separator) + options.lastSeparator + arr[arr.length - 1];
+	const oxfordComma = options.oxfordComma && arr.length > 2 ? options.separator.trim() : '';
+
+	return arr.slice(0, -1).join(options.separator) + oxfordComma + options.lastSeparator + arr[arr.length - 1];
 }
 
 module.exports = arrayToSentence;
