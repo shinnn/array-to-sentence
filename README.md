@@ -65,6 +65,20 @@ arrayToSentence(['Earth', 'Wind', 'Fire'], {
 }); //=> 'Earth, Wind & Fire'
 ```
 
+### options.oxfordComma
+
+Type: `boolean`  
+Default: `false`
+
+Includes the oxford comma. A comma after the second to last word.
+
+```javascript
+arrayToSentence(['A', 'B', 'C'], {
+  oxfordComma: true
+}); //=> 'A, B, and C'
+
+```
+
 ## License
 
 [ISC License](./LICENSE) © 2018 Shinnosuke Watanabe
