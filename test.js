@@ -38,6 +38,18 @@ test('arrayToSentence()', t => {
 		'should change the separator words in response to the options.'
 	);
 
+	t.equal(
+		arrayToSentence(['a', 'b', 'c'], {oxfordComma: true}),
+		'a, b, and c',
+		'should include a comma after the second to last element (the so called oxford comma).'
+	);
+
+	t.equal(
+		arrayToSentence(['a', 'b'], {oxfordComma: true}),
+		'a and b',
+		'no oxford comma with only 2 elements.'
+	);
+
 	t.throws(
 		() => arrayToSentence(),
 		/TypeError.*Expected an array, but got a non-array value undefined\./,
