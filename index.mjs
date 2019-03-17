@@ -26,12 +26,8 @@ export default function arrayToSentence(arr, options) {
 		}
 	}
 
-	if (arr.length === 0) {
-		return '';
-	}
-
-	if (arr.length === 1) {
-		return arr[0];
+	if (arr.length < 2) {
+		return arr.toString();
 	}
 
 	return arr.slice(0, -1).join(options.separator) + options.lastSeparator + arr[arr.length - 1];
